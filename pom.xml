@@ -1,0 +1,302 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+	<artifactId>epsonlibs</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<properties>
+		<peripherals.repositoryId>jenkins</peripherals.repositoryId>
+		<peripherals.repositoryId.name>Release Repo</peripherals.repositoryId.name>
+		<peripherals.repositoryId.url>https://nexus.prod.cloud.fedex.com:8443/nexus/content/repositories/release/</peripherals.repositoryId.url>
+		<revision>0.0.1</revision>
+		<peripherals.module.version>${revision}-module</peripherals.module.version>
+		<peripherals.jar.version>${revision}.RELEASE</peripherals.jar.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+	</properties>
+	<!--Child Modules -->
+	<modules>
+		<module>epsonupos</module>
+		<module>epsonuposadmin</module>
+		<module>epsonuposcorev1140001</module>
+		<module>epsonuposcorev1140001m</module>
+		<module>epsonuposcorev1140001T1</module>
+		<module>epsonuposd30</module>
+		<module>epsonuposh2000</module>
+		<module>epsonuposh6000IV</module>
+		<module>epsonuposj7k</module>
+		<module>epsonuposl90</module>
+		<module>epsonuposl90linerfree</module>
+		<module>epsonuposm30</module>
+		<module>epsonuposmobile1</module>
+		<module>epsonuposp20</module>
+		<module>epsonuposp60II</module>
+		<module>epsonuposp80</module>
+		<module>epsonuposprevious</module>
+		<module>epsonupost20</module>
+		<module>epsonupost20II</module>
+		<module>epsonupost70II</module>
+		<module>epsonupost81</module>
+		<module>epsonupost81II</module>
+		<module>epsonupost82</module>
+		<module>epsonupost82II</module>
+		<module>epsonupost88V</module>
+		<module>epsonupost88VI</module>
+		<module>epsonupostrace</module>
+		<module>pos</module>
+		<module>posv40001</module>
+		<module>posv40001_01</module>
+		<module>posv40001_02</module>
+		<module>uposcommon</module>
+		<module>uposcommoncorev1140001</module>
+		<module>uposcommoncorev1140001m</module>
+		<module>compressed-dlls-epson</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupos</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposadmin</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposcorev1140001</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposcorev1140001m</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposcorev1140001T1</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposd30</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposh2000</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposh6000IV</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposj7k</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposl90</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposl90linerfree</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposm30</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposmobile1</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposp20</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposp60II</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposp80</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonuposprevious</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost20</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost20II</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost70II</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost81</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost81II</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost82</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost82II</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost88V</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupost88VI</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>epsonupostrace</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>pos</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>posv40001</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>posv40001_01</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>posv40001_02</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>uposcommon</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>uposcommoncorev1140001</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>uposcommoncorev1140001m</artifactId>
+			<version>${peripherals.jar.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eai3530951.com.fedex.peripherals.epson</groupId>
+			<artifactId>compressed-dlls-epson</artifactId>
+			<version>${peripherals.jar.version}</version>
+			<type>zip</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<configuration>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>${peripherals.repositoryId}</id>
+			<url>${peripherals.repositoryId.url}</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>${peripherals.repositoryId}</id>
+			<name>${peripherals.repositoryId.name}</name>
+			<url>${peripherals.repositoryId.url}</url>
+		</repository>
+	</distributionManagement>
+
+</project>

@@ -1,0 +1,56 @@
+pipeline{
+	agent {
+        docker {
+            image 'nexus2.prod.cloud.fedex.com:8444/fdx/jenkins/default-tools-image'
+            label 'docker'
+        }
+    }
+
+
+	parameters {
+		string(defaultValue: "ST-Titans-Device@corp.ds.fedex.com", description: 'Success Email List', name: 'successEmail')
+		string(defaultValue: "ST-Titans-Device@corp.ds.fedex.com", description: 'Failure Email List', name: 'errorEmail')
+		}
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '20'))
+	}
+
+	tools {
+    jdk 'JAVA_8'
+		maven 'Maven 3.3.9'
+	}
+
+	stages{
+		stage('checkout'){
+
+			steps{
+
+				checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'WipeWorkspace']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '49da154a-96fe-49dd-9dc1-1300a07dc02a', url: 'git@gitlab.prod.fedex.com:APP3530951/epson-receipt-printer-jars.git']]])
+			}
+		}
+
+	   
+		stage('Deploy to Nexus'){
+				steps
+					{
+						echo "This step publishes the Snapshot jar to Nexus Repositories"
+						script {
+								withCredentials([usernamePassword(credentialsId: 'peripheral-server-nexus-jenkins-deployment', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) 
+									{
+										sh "mvn clean deploy -s settings.xml -Dusername=$NEXUS_USER -Dpassword=$NEXUS_PASSWORD -U -Dmaven.test.skip=true"
+									}
+							}
+					}
+			}				
+	}
+	
+    post {
+  		failure {    // notify users when the Pipeline fails
+  			mail(to: params.errorEmail, subject: "Jenkins RTL-Peripheral Epson JAR and DLL Publish to Nexus Pipeline Failure Notice", body: "**************** SOMETHING WENT WRONG **********************\n\nHi\n\nThe Application Continuous Delivery pipeline for RTL-Peripheral Epson JAR and DLL Publish to Nexus failed. \n\nThe Link to the failed Jenkins pipeline can be found here: \n\n${env.BUILD_URL} \n\nPlease navigate to the above mentioned Jenkins job to see the logs.\n\nThanks!")
+  		}
+  		success {    // notify users when the Pipeline succeeds
+  			mail(to: params.successEmail, subject: "Jenkins RTL-Peripheral Epson JAR and DLL Publish to Nexus Pipeline Executed Successfully", body: "**************** Application Publish Successful **********************\n\nHi\n\nThe Application Continuous Delivery pipeline for RTL-Peripheral Epson JAR and DLL Publish to Nexus is Successfully executed. \n\nThe Link to the Successful Jenkins pipeline can be found here: \n\n${env.BUILD_URL} \n\nPlease navigate to the above mentioned Jenkins job to see the logs.\n\nThanks!")
+  		}
+  	}
+}
